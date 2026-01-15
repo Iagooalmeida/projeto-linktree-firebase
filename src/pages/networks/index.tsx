@@ -1,9 +1,8 @@
 
-
-export function Networks() {
-    return (
-        <div>
-            <h1>Página Networks</h1>
-        </div>
-    )
+export function Networks(){
+  return(
+    <div>
+      <h1>Página redes sociais</h1>
+    </div>
+  )
 }
