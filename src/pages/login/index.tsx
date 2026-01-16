@@ -1,9 +1,9 @@
-import { auth } from "../../services/firebaseConnection";
-import { signInWithEmailAndPassword } from "firebase/auth";
-
-import { type FormEvent, useState } from "react";
+import { FormEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Input } from '../../components/Input'
+
+import { auth } from '../../services/firebaseConnection'
+import { signInWithEmailAndPassword } from 'firebase/auth'
 
 export function Login(){
   const [email, setEmail] = useState("");
@@ -15,18 +15,21 @@ export function Login(){
     e.preventDefault();
 
     if(email === '' || password === ''){
-      alert("Preencha todos os campos!");
+      alert("Preencha todos os campos!")
       return;
     }
 
     signInWithEmailAndPassword(auth, email, password)
-    .then( () => {
-      navigate("/admin", { replace: true } );
-      console.log("Usuário logado com sucesso!");
+    .then(() => {
+      console.log("LOGADO COM SUCESSO!")
+      navigate("/admin", { replace: true })
     })
-    .catch( (error) => {
-      console.log("Erro ao fazer o login: ", error);
+    .catch((error) => {
+      console.log("ERRO AO FAZER O LOGIN:")
+      console.log(error);
     })
+
+
 
   }
 
@@ -34,7 +37,7 @@ export function Login(){
     <div className="flex w-full h-screen items-center justify-center flex-col">
       <Link to="/">
         <h1 className="mt-11 text-white mb-7 font-bold text-5xl">Dev
-        <span className="bg-linear-to-r from-yellow-500 to-orange-400 bg-clip-text text-transparent">Link</span>
+        <span className="bg-gradient-to-r from-yellow-500 to-orange-400 bg-clip-text text-transparent">Link</span>
         </h1>
       </Link>
 
@@ -55,7 +58,6 @@ export function Login(){
 
         <button 
         type="submit"
-        style={{ cursor: "pointer" }}
         className="h-9 bg-blue-600 rounded border-0 text-lg font-medium text-white">
           Acessar
         </button>
